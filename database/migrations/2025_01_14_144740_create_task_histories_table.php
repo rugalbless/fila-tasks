@@ -13,7 +13,10 @@ return new class extends Migration
     {
         Schema::create('task_histories', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
+            $table->foreignId('task_id')->constrained('tasks')->onDelete('cascade');
+            $table->string('action');
+            $table->foreignId('changed_by')->nullable();
+            $table->timestamps('changed_at')->useCurrent();
         });
     }
 

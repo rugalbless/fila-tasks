@@ -13,6 +13,10 @@ return new class extends Migration
     {
         Schema::create('task_evaluations', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('task_id')->constrained('tasks')->onDelete('cascade');
+            $table->foreignId('evaluator_id')->constrained('users')->onDelete('cascade');
+            $table->integer('rating');
+            $table->text('feedback')->nullable();
             $table->timestamps();
         });
     }
