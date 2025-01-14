@@ -16,7 +16,7 @@ return new class extends Migration
             $table->foreignId('task_id')->constrained('tasks')->onDelete('cascade');
             $table->string('action');
             $table->foreignId('changed_by')->nullable();
-            $table->timestamps('changed_at')->useCurrent();
+            $table->timestamp('changed_at')->useCurrent();
         });
     }
 
