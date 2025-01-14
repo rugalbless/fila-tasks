@@ -15,7 +15,8 @@ return new class extends Migration
             $table->id();
             $table->foreignId('task_id')->constrained('tasks')->onDelete('cascade');
             $table->string('file_path');
-            $table->timestamp('uploaded_at')->useCurrent();
+            $table->morphs('uploader');
+            $table->timestamps();
         });
     }
 
